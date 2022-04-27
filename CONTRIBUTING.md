@@ -10,9 +10,8 @@ Please note we have a code of conduct, please follow it in all your interactions
 
 If this is your first time contributing to the project, and you don't want to commit, there are other tasks you can do to be a hero:
 
-- Review a [Pull Request]().
-- Fix an [Issue]().
-- Update the [docs]().
+- Review a [Pull Request](https://github.com/swapper-org/eth-transactions-indexer/pulls).
+- Fix an [Issue](https://github.com/swapper-org/eth-transactions-indexer/issues).
 - Write a tutorial.
 - Enhance the project's identity.
 - Spread the project.
@@ -21,7 +20,7 @@ If this is your first time contributing to the project, and you don't want to co
 
 ### Issue Process
 
-Have you noticed any **bugs** or have any **feature** requests? You can submit any request [here]().
+Have you noticed any **bugs** or have any **feature** requests? You can submit any request [here](https://github.com/swapper-org/eth-transactions-indexer/issues/new).
 
 It's generally best if you get confirmation of your bug or approval for your feature request this way before starting to code.
 
@@ -44,15 +43,12 @@ git checkout -b 123-support-bitcoin-cash-rpc-api
 #### Get your project running
 
 Before you start coding, you need to test if your project is running in your machine.
-Check out the [README]() to warm up and set up the project.
+Check out the [README](https://github.com/swapper-org/eth-transactions-indexer/blob/main/README.md) to warm up and set up the project.
 
 #### Implement your fix or feature
 
 At this point, you're ready to make your changes! Feel free to ask for help, everyone is a beginner at first.
 
-#### Run lint and tests
-
-Before submitting a pull request, make sure your changes don't break any functionality of the project. Check out the [README]() to see how can you do it.
 
 #### Make a Pull Request
 

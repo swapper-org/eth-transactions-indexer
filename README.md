@@ -2,7 +2,7 @@
 
 **ETH-Transactions-Indexer** is a service that allows you to store ETH and ERC20 transactions in a Postgres database to get insights of them.
 
-This repository only contains the python code that indexs the transactions into the Postgres database. ETH node and Postgres database management is out of this repository, althought [database schema](db-schema.sql) is provided.
+This repository only contains the python code that indexs the transactions into the Postgres database. ETH node and Postgres database management is out of this repository, althought [database schema]([db-schema.sql](https://github.com/swapper-org/eth-transactions-indexer/blob/main/db-schema.sql)) is provided.
 
 
 # Workflow
@@ -71,7 +71,7 @@ To avoid python module conflicts, it is highly recommend to create a python virt
 
 ## Contributing
 
-Please read [Contribution Guidelines]() for details on our code of conduct, and the process for submitting pull requests to us.
+Please read [Contribution Guidelines](https://github.com/swapper-org/eth-transactions-indexer/blob/main/CONTRIBUTING.md) for details on our code of conduct, and the process for submitting pull requests to us.
 
 # License
 
