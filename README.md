@@ -58,7 +58,7 @@ To avoid python module conflicts, it is highly recommend to create a python virt
 
 # Docker
 
-**ETH-Transactions-Indexer** has a public image in [Docker Hub](https://hub.docker.com/repository/docker/nodechain/eth-transactions-indexer).
+**ETH-Transactions-Indexer** has a public image in [Docker Hub](https://hub.docker.com/r/nodechain/eth-transactions-indexer).
 
 # Dependencies
 
