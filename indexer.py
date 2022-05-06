@@ -156,7 +156,7 @@ def insertBlockTransactions(web3, cur, blockNumber, numTxs):
             contractValue = tx["input"][74:]
 
         if len(contractTo) > 128:
-            logger.info(f"Skipping {tx['txhash'].hex()} tx. Incorrect contract_to length: {len(contractTo)}")
+            logger.info(f"Skipping {tx['hash'].hex()} tx. Incorrect contract_to length: {len(contractTo)}")
             contractTo = ""
             contractValue = ""
 
