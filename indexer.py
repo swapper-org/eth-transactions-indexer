@@ -164,19 +164,19 @@ def insertBlockTransactions(web3, cur, blockNumber, numTxs):
             contractValue = ""
 
         cur.execute(
-           'INSERT INTO public.ethtxs(time, txfrom, txto, value, gas, gasprice, block, txhash, contract_to, contract_value, status)'
+           'INSERT INTO public.ethtxs(time, txfrom, txto, value, gas, gasprice, block, txhash, contract_to, contract_value, status) '
            'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) '
-           'ON CONFLICT (txhash)'
-           'DO UPDATE SET'
-           'time = EXCLUDED.time,'
-           'txfrom = EXCLUDED.txfrom,'
-           'txto = EXCLUDED.txto,'
-           'gas = EXCLUDED.gas,'
-           'gasprice = EXCLUDED.gasprice,'
-           'block = EXCLUDED.block,'
-           'value = EXCLUDED.value,'
-           'contract_to = EXCLUDED.contract_to,'
-           'contract_value = EXCLUDED.contract_value,'
+           'ON CONFLICT (txhash) '
+           'DO UPDATE SET '
+           'time = EXCLUDED.time, '
+           'txfrom = EXCLUDED.txfrom, '
+           'txto = EXCLUDED.txto, '
+           'gas = EXCLUDED.gas, '
+           'gasprice = EXCLUDED.gasprice, '
+           'block = EXCLUDED.block, '
+           'value = EXCLUDED.value, '
+           'contract_to = EXCLUDED.contract_to, '
+           'contract_value = EXCLUDED.contract_value, '
            'status = EXCLUDED.status',
            (blockTime, tx["from"], tx["to"], tx["value"], txReceipt["gasUsed"], tx["gasPrice"], blockNumber, tx["hash"].hex(), contractTo, contractValue, status))
 
