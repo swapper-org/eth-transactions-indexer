@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 from os import environ
 from web3 import Web3
+from web3.middleware import geth_poa_middleware
 import psycopg2
 import logging
 import time
@@ -59,6 +60,8 @@ def main():
         web3 = Web3(Web3.WebsocketProvider(nodeUrl))
     else:
         web3 = Web3(Web3.IPCProvider(nodeUrl))
+
+    web3.middleware_onion.inject(geth_poa_middleware, layer=0)
 
     if not web3.isConnected():
         logger.info(f"Can not connect to node url {nodeUrl}")
@@ -161,7 +164,20 @@ def insertBlockTransactions(web3, cur, blockNumber, numTxs):
             contractValue = ""
 
         cur.execute(
-           'INSERT INTO public.ethtxs(time, txfrom, txto, value, gas, gasprice, block, txhash, contract_to, contract_value, status) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)',
+           'INSERT INTO public.ethtxs(time, txfrom, txto, value, gas, gasprice, block, txhash, contract_to, contract_value, status)'
+           'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) '
+           'ON CONFLICT (txhash)'
+           'DO UPDATE SET'
+           'time = EXCLUDED.time,'
+           'txfrom = EXCLUDED.txfrom,'
+           'txto = EXCLUDED.txto,'
+           'gas = EXCLUDED.gas,'
+           'gasprice = EXCLUDED.gasprice,'
+           'block = EXCLUDED.block,'
+           'value = EXCLUDED.value,'
+           'contract_to = EXCLUDED.contract_to,'
+           'contract_value = EXCLUDED.contract_value,'
+           'status = EXCLUDED.status',
            (blockTime, tx["from"], tx["to"], tx["value"], txReceipt["gasUsed"], tx["gasPrice"], blockNumber, tx["hash"].hex(), contractTo, contractValue, status))
 
 
