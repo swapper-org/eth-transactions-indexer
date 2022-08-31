@@ -164,8 +164,8 @@ def insertBlockTransactions(web3, cur, blockNumber, numTxs):
             contractValue = ""
 
         cur.execute(
-           'INSERT INTO public.ethtxs(time, txfrom, txto, value, gas, gasprice, block, txhash, contract_to, contract_value, status) '
-           'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) '
+           'INSERT INTO public.ethtxs(time, txfrom, txto, value, gas, gasprice, block, txhash, contract_to, contract_value, status, data) '
+           'VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s) '
            'ON CONFLICT (txhash) '
            'DO UPDATE SET '
            'time = EXCLUDED.time, '
@@ -178,7 +178,8 @@ def insertBlockTransactions(web3, cur, blockNumber, numTxs):
            'contract_to = EXCLUDED.contract_to, '
            'contract_value = EXCLUDED.contract_value, '
            'status = EXCLUDED.status',
-           (blockTime, tx["from"], tx["to"], tx["value"], txReceipt["gasUsed"], tx["gasPrice"], blockNumber, tx["hash"].hex(), contractTo, contractValue, status))
+           'data = EXCLUDED.data',
+           (blockTime, tx["from"], tx["to"], tx["value"], txReceipt["gasUsed"], tx["gasPrice"], blockNumber, tx["hash"].hex(), contractTo, contractValue, status, tx["input"]))
 
 
 if __name__ == "__main__":
