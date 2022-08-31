@@ -177,7 +177,7 @@ def insertBlockTransactions(web3, cur, blockNumber, numTxs):
            'value = EXCLUDED.value, '
            'contract_to = EXCLUDED.contract_to, '
            'contract_value = EXCLUDED.contract_value, '
-           'status = EXCLUDED.status',
+           'status = EXCLUDED.status, '
            'data = EXCLUDED.data',
            (blockTime, tx["from"], tx["to"], tx["value"], txReceipt["gasUsed"], tx["gasPrice"], blockNumber, tx["hash"].hex(), contractTo, contractValue, status, tx["input"]))
 
